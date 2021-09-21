@@ -1,0 +1,49 @@
+.Img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.ImgDiv{
+    width: 100%;
+    height: 150px;
+   
+}
+.up{
+    width: 30%;
+    
+    margin: 30px 0px 30px 20px;
+    background-color:#939295 ;
+    border-radius: 10px;
+}
+.Row{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    margin-left:0px ;
+    margin-right: 0px;
+}
+.ImgType{
+    background-color:#939295 ;
+    text-align: center;
+    margin-bottom: 0px;
+    
+}
+.clickImg{
+    width: 100%;
+    height: 100%;
+}
+.clickImg-div{
+    width: 100%;
+    height: 100%;
+}
+.Active{
+    width: 95%;
+    height: 300px;
+    margin: auto;
+}
+.DetailsTitle{
+    background-color: green;
+    color: honeydew;
+    text-align: center;
+    padding: 10px 0px;
+}

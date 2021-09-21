@@ -1,0 +1,43 @@
+.card{
+    width: 100%;
+    margin: auto;
+    height: 350px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.t th{
+    /* background-color: green; */
+    padding: 15px 10px;
+}
+.tbody{
+    text-align: center;
+    font-weight: bolder;
+}
+.tbody td{
+    padding: 10px 10px;
+}
+.table{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    
+}
+table{
+    box-shadow: 0px 0px 3px gray;
+    width: 100%;
+}
+tfoot{
+    text-align: center;
+}
+tfoot td{
+    padding: 10px 10px;
+    font-weight: bold;
+}
+.buttonLeft{
+    /* background-color: rgb(53, 50, 212); */
+}
+.buttonRight{
+    /* background-color: red; */
+}
