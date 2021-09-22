@@ -29,6 +29,11 @@ export class Single extends Component {
         this.props.bookDetails(e)
         this.props.history.push('/book')
     }
+    history=(e)=>{
+        // console.log('Single Submit Values:',e)
+        
+        this.props.history.push('/history')
+    }
     signup=()=>{
         this.props.history.push('/signup')
     }
@@ -52,7 +57,7 @@ export class Single extends Component {
         return (
             <div className='container' style={{padding:'20px 0px'}} >
               {/* <h1 style={{textAlign:'center'}}>Single</h1>   */}
-              <Room imgArr={imgArr} room='single' bookButton={this.Book} signup={this.signup} login={this.login} book={this.props.book} />
+              <Room imgArr={imgArr} room='single' bookButton={this.Book} signup={this.signup} login={this.login} book={this.props.book} history={this.history} />
             </div>
         )
     }

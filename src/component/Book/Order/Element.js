@@ -14,7 +14,7 @@ export class Element extends Component {
 // username: "barna"
     render() {
         let item=this.props.item
-        // console.log('Element:',item)
+        console.log('Element:',item)
         
         return (
             <div className='main'>
@@ -44,8 +44,8 @@ export class Element extends Component {
                             <span className='right'>{item.roomname} </span>
                         </div>
                         <div className='item'>
-                            <span className='left'>Booking Rooms:</span>
-                            <span className='right'>{item.roomno} </span>
+                            <span className='left'>Price:</span>
+                            <span className='right'>{item.price} </span>
                         </div>
                         <div className='item'>
                             <span className='left'>Booking Date:</span>

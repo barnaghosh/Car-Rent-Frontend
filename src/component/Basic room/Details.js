@@ -51,11 +51,11 @@ export class Details extends Component {
     render() {
         let opp = this.props.opp
         let mark = <i className="fa fa-check" style={{ color: 'green' }}></i>
-        
+        console.log('UserType',this.props.token)
         const submitValue = {
             date: this.state.startDate.toDateString(),
             roomNo: this.state.selectValue,
-            price: this.state.selectValue * this.props.price,
+            price:  this.props.price,
             roomName: this.props.name,
             roomType: this.props.room,
             totalRoom: this.props.roomNo,
@@ -90,12 +90,13 @@ export class Details extends Component {
 
             optionArr = [...Array(avalible).keys()];
             // console.log('option:',this.state.selectValue)
-            price = this.props.price * this.state.selectValue
+            price = this.props.price 
             option = optionArr.map((item, index) => {
                 return <option style={{ width: '150px' }} className='form-control' value={index + 1} key={Math.random()} > {index + 1} </option>
             })
         }
         else {
+            price=this.props.price
             disable = true
         }
         
@@ -137,7 +138,8 @@ export class Details extends Component {
                 </div>    
                 <div style={{ borderLeft: '2px solid gray', width: '10%', textAlign: 'center' }} className=''>
                     <p>{this.props.roomNo} </p>
-                    <p style={{ color: 'red' }}>{avalible> 0 ? avalible : 'Sorry no'} car left </p>
+                    {this.props.token==='owner'?null:<p style={{ color: 'red' }}>{avalible> 0 ? avalible : 'Sorry no'} car left </p>}
+                    
                 </div>
                 {/* <div style={{ borderLeft: '2px solid gray', width: '10%' ,textAlign:'center'}} className=''>
                     {avalible>0?<select value={this.state.selectValue} onChange={this.HandleChange} >
@@ -145,20 +147,13 @@ export class Details extends Component {
                     </select>:null}
                 </div> */}
                 <div style={{ borderLeft: '2px solid gray', width: '15%' }} className=''>
-                {avalible>0?<>{price} BDT </>:null}
+                {/* {avalible>0?<>{price} BDT </>:null} */}
+                {this.props.token==='owner'?<> {price} BDT </>:avalible>0?<>{price} BDT </>:null}
+
                  </div>
                 <div style={{ borderLeft: '2px solid gray', width: '15%' }} className=''>
                     <div className='button'>
-                        {this.props.token === null ? <><div>
-                            <Button className='btn' color='primary' onClick={() => this.props.signup()} > Sign Up </Button>
-                        </div>
-                            <div>
-                                Or
-                        </div>
-                            <div>
-                                <Button className='btn ' color='primary' onClick={() => this.props.login()} > Login </Button>
-                            </div>
-                        </>: <Button className='btn' color='primary'  onClick={() => this.props.bookButton(submitValue)} disabled={disable}  > Book </Button>}
+                        {this.props.token === 'owner' ?avalible>0?<div style={{ color: 'red' }}>Not Booked </div>:<div style={{ color: 'green' }}>Booked  </div> : <Button className='btn' color='primary'  onClick={() => this.props.bookButton(submitValue)} disabled={disable}  > Book </Button>}
 
                     </div>
                 </div>

@@ -16,7 +16,8 @@ const mapStateToProps=state=>{
     return({
         token:state.token,
         userId:state.userId,
-        book:state.book
+        book:state.book,
+        usertype:state.usertype
     })
 }
 
@@ -31,35 +32,67 @@ export class Order extends Component {
         let order=null
         let condition=true;
         console.log('BookItem:',this.props.book)
-        if(this.props.book.length!==0){
-            console.log('c:',this.props.book)
-            order=this.props.book.map((item)=>{
-                console.log('check:',item)
-                console.log('con:',this.props.userId)
-                condition=true
-                if(item.user==this.props.userId){
+        if(this.props.usertype==='customer'){
+            if(this.props.book.length!==0){
+                console.log('c:',this.props.book)
+                order=this.props.book.map((item)=>{
+                    console.log('check:',item)
+                    console.log('con:',this.props.userId)
+                    console.log('condition:',item.user==this.props.userId)
                     condition=true
-                    return <Element item={item} key={Math.random()} />
-                }
-                else{
-                    condition=false
-                }
-                
-            })
-        }
-        else{
-            if(this.state.condition){
-                <Spinner/>
-                setTimeout(()=>{
-                    this.setState({
-                        condition:false
-                    })
+                    if(item.user==this.props.userId){
+                        console.log('Hi')
+                        condition=true
+                        return <Element item={item} key={Math.random()} />
+                    }
+                    else{
+                        condition=false
+                    }
+                    
                 })
             }
             else{
-                order= <Alert  style={{width:'60%',margin:'auto',textAlign:'center'}}>You have no booking</Alert>
+                if(this.state.condition){
+                    <Spinner/>
+                    setTimeout(()=>{
+                        this.setState({
+                            condition:false
+                        })
+                    })
+                }
+                else{
+                    order= <Alert  style={{width:'60%',margin:'auto',textAlign:'center'}}>You have no booking</Alert>
+                }
+               
             }
-           
+        }
+        else{
+            if(this.props.book.length!==0){
+                console.log('c:',this.props.book)
+                order=this.props.book.map((item)=>{
+                    console.log('check:',item)
+                    console.log('con:',this.props.userId)
+                    console.log('condition:',item.user==this.props.userId)
+                    condition=true
+                    return <Element item={item} key={Math.random()} />
+                    
+                    
+                })
+            }
+            else{
+                if(this.state.condition){
+                    <Spinner/>
+                    setTimeout(()=>{
+                        this.setState({
+                            condition:false
+                        })
+                    })
+                }
+                else{
+                    order= <Alert  style={{width:'60%',margin:'auto',textAlign:'center'}}>No Car Book</Alert>
+                }
+               
+            }
         }
         
         

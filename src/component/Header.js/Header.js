@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 
 const mapStateToProps=state=>{
     return({
-        token:state.token
+        token:state.token,
+        usertype:state.usertype
     })
 }
 
@@ -20,6 +21,7 @@ export class Header extends Component {
         })
     }
     render() {
+        console.log('UserTypeHeader:',this.props.usertype)
         return (
             <div>
                 <Navbar dark expand="md" className='Navbar'  >
@@ -73,7 +75,10 @@ export class Header extends Component {
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                             <NavItem>
-                                <NavLink tag={Link} to="/history"  >History</NavLink>
+                                {this.props.usertype==='customer'?<NavLink tag={Link} to="/history"  >History</NavLink>:<NavLink tag={Link} to="/history"  >Client Order</NavLink>}
+                            </NavItem>
+                            <NavItem>
+                                {this.props.usertype==='customer'?<NavLink tag={Link} to="/account"  >Cilent</NavLink>:<NavLink tag={Link} to="/account"  >Owner</NavLink>}
                             </NavItem>
                             <NavItem>
                                 <NavLink tag={Link} to="/logout"  >Log Out</NavLink>

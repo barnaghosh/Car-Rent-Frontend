@@ -4,6 +4,7 @@ import * as ActionTypes from './ActionTypes'
 const INTIALIZE_STATE={
     token:null,
     userId:null,
+    usertype:null,
     authErr:null,
     alert:false,
     authState:null,
@@ -52,17 +53,20 @@ export const reducer =(state=INTIALIZE_STATE,action)=>{
        })
    }
     if(action.type===ActionTypes.AUTH_SUCCESS){
+        console.log('Data Reducer:',action.payload.usertype)
         return({
             ...state,
             token:action.payload.token,
-            userId:action.payload.userId
+            userId:action.payload.userId,
+            usertype:action.payload.usertype
         })
     }
     if(action.type===ActionTypes.AUTH_LOGOUT){
         return({
             ...state,
             token:null,
-            userId:null
+            userId:null,
+            usertype:null
         })
     }
     if(action.type===ActionTypes.AUTH_LOADING){
@@ -90,3 +94,4 @@ export const reducer =(state=INTIALIZE_STATE,action)=>{
     
     return state;
 }
+console.log('Check reducer usertype:',INTIALIZE_STATE.usertype)

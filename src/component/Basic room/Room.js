@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
 const mapStateToProps=state=>{
     return({
         
-        token:state.token
+        token:state.usertype
     })
 }
 
@@ -49,7 +49,7 @@ export class Room extends Component {
         let description=null;
         let selectImgId=0;
       
-        // console.log('State:',this.state)
+        console.log('State:',this.props.token)
         // Room pics   
         const img=this.props.imgArr.map((item,index)=>{
            if(this.state.baseURI.length!==0){
@@ -85,7 +85,7 @@ export class Room extends Component {
         // details section
         let details=''
         const detailsRow=this.props.imgArr.map((item)=>{
-            return <Details img={item.src} room={this.props.room} name={item.type} des={item.des} opp={item.opp} roomNo={item.Total} price={item.price} aval={item.aval} bookButton={this.props.bookButton} token={this.props.token} key={Math.random()} signup={this.props.signup} login={this.props.login} book={this.props.book} />
+            return <Details img={item.src} room={this.props.room} name={item.type} des={item.des} opp={item.opp} roomNo={item.Total} price={item.price} aval={item.aval} bookButton={this.props.bookButton} token={this.props.token} key={Math.random()} signup={this.props.signup} login={this.props.login} book={this.props.book} history={this.props.history} />
         })
         let detailsTitle=(
             <div className='DetailsTitle' style={{display:'flex'}}>
@@ -115,10 +115,10 @@ export class Room extends Component {
                Select Room 
              </div> */}
              <div style={{width:'15%'}} className=''>
-               Price 
+               Price
              </div>
              <div style={{width:'15%'}} className=''>
-                Purchase
+             {this.props.token==='owner'?'Information':'Book'}
              </div>
         </div>
         )

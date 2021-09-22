@@ -9,6 +9,7 @@ import Double from './Rooms/Double'
 import Triple from './Rooms/Triple'
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
+import Acc from './account/acc'
 import CustomerSignup from './Auth/CustomerSignup'
 import {AuthCheck, Logout} from '../redux/AuthCreator'
 import {connect} from 'react-redux'
@@ -28,7 +29,8 @@ const mapDispatchToProps=dispatch=>{
 const mapStateToProps=state=>{
     return({
         token:state.token,
-        bookDetails:state.bookDetails
+        bookDetails:state.bookDetails,
+        usertype:state.usertype
     })
 }
 
@@ -38,7 +40,7 @@ export class Main extends Component {
         this.props.getItem()
     }
     render() {
-        // console.log('BookDeatils:',this.props.bookDetails)
+        console.log('BookDeatils:',this.props.usertype)
         let before_auth=(
                     <Switch>
                         {/* <Route path='/room/single' component={Single} />
@@ -62,6 +64,7 @@ export class Main extends Component {
                         {/* <Route path='/about' component={About} /> */}
                         <Route path='/car/noah' component={Double}/>
                         <Route path='/car/micro' component={Triple} />
+                        <Route path='/account' component={Acc} />
                         {this.props.bookDetails!==null?<Route path='/book' component={Book} />:null}
                         {this.props.bookDetails!==null?<Route path='/form'component={Form}/>:null}
                         <Route path='/logout' component={LogOut}/>
